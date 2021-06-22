@@ -1,9 +1,39 @@
+#include "FastLED.h"
+
+//up to 50
+#define NUM_LEDS 50 
+
+#define DATA_PIN 7 // Pino de dados 7 conectado com um resistor de 470 Ohms
+
+#define LED_TYPE WS2812B
+
+#define COLOR_ORDER RGB 
+
+#define PIN_BOTAO 2 // Ligado em PULLUP (sem resistor)
+
+//Alcance 0-64
+#define BRIGHTNESS 50
+
+// Níveis de dificuldade
+#define EASY 1
+#define MEDIUM 2
+#define HARD 3
+#define ON_SPEED 4
+#define SONIC_SPEED 5
+#define ROCKET_SPEED 6
+#define LIGHT_SPEED 7
+#define MISSION_IMPOSSIBLE 8
+
+int CENTER_LED = 25;
+//Starting difficulty
+int difficulty = 1;
+
 void setup() {
-  // put your setup code here, to run once:
+  
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  
 
 }

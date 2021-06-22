@@ -43,6 +43,21 @@ bool Playing = true;
 // Is this the first win?
 bool CycleEnded = true;
 
+// Button details
+const int buttonPin = 9; // conectado com um resistor de 10k em pulldown no negativo do botão e o positivo do botão no 5v
+int buttonState = 0;
+
+// Initialize the led library and arduino functions
+void (*funcReset)() = 0;
+void setup() 
+{
+  FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
+  FastLED.setBrightness(BRIGHTNESS);
+  pinMode(buttonPin, INPUT);
+  pinMode(PIN_BOTAO, INPUT_PULLUP);
+  Serial.begin(9600);
+}
+
 void setup() {
   
 

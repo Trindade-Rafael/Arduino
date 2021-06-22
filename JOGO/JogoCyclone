@@ -28,6 +28,21 @@ int CENTER_LED = 25;
 //Starting difficulty
 int difficulty = 1;
 
+// Define the array of leds
+CRGB leds[NUM_LEDS];
+
+// Did player win this round? This tag is used for difficulty parameters.
+bool wonThisRound = false;
+
+// Starting location of the cycling light
+int LEDaddress = 0;
+
+// Is game running?
+bool Playing = true;
+
+// Is this the first win?
+bool CycleEnded = true;
+
 void setup() {
   
 

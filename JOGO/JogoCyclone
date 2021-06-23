@@ -9,7 +9,7 @@
 
 #define COLOR_ORDER RGB 
 
-#define PIN_BOTAO 2 // Ligado em PULLUP (sem resistor)
+#define PIN_BOTAO 2 // Ligado em PULLUP no negativo // Ligado no pino 2
 
 //Alcance 0-64
 #define BRIGHTNESS 50

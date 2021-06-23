@@ -148,7 +148,51 @@ void loop()
  }
 }
 
-
+//Level Parameters
+int getTime(int diff) // Returns time delay for led movement base on difficulty
+{
+   
+  int timeValue = 0;
+  
+  switch (diff)
+  {
+    case EASY:
+    CENTER_LED = random(9,10);
+      timeValue = 100;
+      break;
+    case MEDIUM:
+    CENTER_LED = random(20,21);
+    leds[LEDaddress] = CRGB::Blue;
+    FastLED.show();
+      timeValue = 80;
+      break;
+    case HARD:
+    CENTER_LED = random(10,11);
+    leds[LEDaddress] = CRGB::Purple;
+    FastLED.show();
+      timeValue = 60;
+      break;
+    case ON_SPEED:
+      CENTER_LED = random(35,36);
+      timeValue = 40;
+      break;
+    case SONIC_SPEED:
+    CENTER_LED = random(20,21);
+      timeValue = 30;
+      break;
+    case ROCKET_SPEED:
+    CENTER_LED = random(30,31);
+      timeValue = 18;
+      break;
+    case LIGHT_SPEED:
+    CENTER_LED = random(24,25);
+      timeValue = 15;
+      break;
+    case MISSION_IMPOSSIBLE:
+      timeValue = 5;
+  }
+  return timeValue;// Return the delay amount
+}
 
 void setup() {
   

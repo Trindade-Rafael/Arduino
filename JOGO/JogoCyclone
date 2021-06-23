@@ -58,6 +58,97 @@ void setup()
   Serial.begin(9600);
 }
 
+// The meat and potatoes
+//Two Modes - Playing and End Game
+void loop() 
+{ 
+  //END GAME
+  buttonState = digitalRead(buttonPin);
+    if(digitalRead(PIN_BOTAO) == LOW)
+  {       
+    funcReset();
+    }
+  
+  if (buttonState == HIGH)
+  {
+    Playing = false; //User has pressed the button, and the LED has stopped on the winning address.
+     for (int i = 0; i < NUM_LEDS; i++)
+     {
+      leds [i] = CRGB::Black;
+     }
+    leds[CENTER_LED] = CRGB::Red;
+    leds[LEDaddress] = CRGB::Green;  
+    FastLED.show();
+    if (CycleEnded = true)
+    {
+      int diff = abs(CENTER_LED - LEDaddress); //Finds distance between the lit led and the center led
+      if (diff == 0)
+      {
+        wonThisRound = true; //Player sucessfully beat the level 
+        if (difficulty != MISSION_IMPOSSIBLE)
+         {
+          for (int i = 0; i < 2; i++)
+           {
+            cylon();
+           }
+         }
+        if (difficulty == MISSION_IMPOSSIBLE)
+         {
+          for (int i = 0; i < 8; i++)
+           {
+            cylon();
+           }
+          difficulty = 0; 
+         }
+        increaseDifficulty();     
+        wonThisRound = false;
+        
+      }
+       else
+      {
+      delay(1000);  
+      for (int i = 0; i < 2; i++)
+       {
+        flash();
+       }
+      }
+        CycleEnded = false;
+      }
+    LEDaddress = 0; 
+    delay(250);
+    buttonState = digitalRead(buttonPin);
+    if (buttonState == LOW)
+    {
+     Playing = true;
+    }
+  }
+   //PLAYING
+  if(Playing)
+  {
+    for (int i = 0; i < NUM_LEDS; i++)
+    {
+      leds[i] = CRGB::Black; //Turns off all the leds
+    }
+    
+    leds[CENTER_LED] = CRGB::Red; //Sets center led color to red
+    leds[LEDaddress] = CRGB::Green; //Sets cyling led color to green
+    FastLED.show(); //Initializes light cycle
+    LEDaddress++; //Sets light cycle to one led at a time
+    if (LEDaddress == NUM_LEDS)
+    {
+      LEDaddress = 0;
+    }
+    delay(getTime(difficulty));
+    buttonState = digitalRead(buttonPin);
+    if (buttonState == HIGH)
+    {
+     Playing = false;
+     CycleEnded = true;
+    }
+ }
+}
+
+
 void setup() {
   
 

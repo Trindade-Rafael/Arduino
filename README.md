@@ -1,5 +1,5 @@
 # Arduino
-O objetivo do jogo é acertar o led que se movimenta no led que se encontra estático. A cada vez que o jogador acerta, a dificuldade aumenta pois o led em movimento fica mais veloz e o led estático muda posição.
+O objetivo do jogo é acertar o led que se movimenta no led que se encontra estático. A cada vez que o jogador acerta, a dificuldade aumenta pois o led em movimento fica mais veloz e o led estático muda de posição.
 
 # Material necessário:
 Placa Arduino (Uno ou Nano)

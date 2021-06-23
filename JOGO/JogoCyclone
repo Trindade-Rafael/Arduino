@@ -194,12 +194,62 @@ int getTime(int diff) // Returns time delay for led movement base on difficulty
   return timeValue;// Return the delay amount
 }
 
-void setup() {
+//Winning difficulty increase parameters
+void increaseDifficulty() 
+{
+  if (difficulty != MISSION_IMPOSSIBLE && wonThisRound) 
+  {
+    difficulty++;
+  }
+  }
   
 
+//Lost LED Show
+void flash()
+{ 
+  fill_solid(leds, NUM_LEDS, CRGB::Red);
+  FastLED.show();
+  delay(300);
+  fill_solid(leds, NUM_LEDS, CRGB::Black);
+  FastLED.show();
+  delay(300);
 }
 
-void loop() {
-  
+//Won LED Show
+void fadeall() 
+{ 
+  for(int i = 0; i < NUM_LEDS; i++) { leds[i].nscale8(250); } 
+}
 
+
+void cylon() 
+{ 
+  static uint8_t hue = 0;
+  Serial.print("x");
+  // First slide the led in one direction
+  for(int i = 0; i < NUM_LEDS; i++) {
+    // Set the i'th led to red 
+    leds[i] = CHSV(hue++, 255, 255);
+    // Show the leds
+    FastLED.show(); 
+    // now that we've shown the leds, reset the i'th led to black
+    // leds[i] = CRGB::Black;
+    fadeall();
+    // Wait a little bit before we loop around and do it again
+    delay(10);
+  }
+  Serial.print("x");
+
+  // Now go in the other direction.  
+  for(int i = (NUM_LEDS)-1; i >= 0; i--) {
+    // Set the i'th led to red 
+    leds[i] = CHSV(hue++, 255, 255);
+    // Show the leds
+    FastLED.show();
+    // now that we've shown the leds, reset the i'th led to black
+    // leds[i] = CRGB::Black;
+    fadeall();
+    // Wait a little bit before we loop around and do it again
+    delay(10);
+  }
 }

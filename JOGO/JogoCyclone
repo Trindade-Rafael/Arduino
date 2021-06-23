@@ -127,7 +127,7 @@ void loop()
   {
     for (int i = 0; i < NUM_LEDS; i++)
     {
-      leds[i] = CRGB::Black; //Turns off all the leds
+      leds[i] = CRGB::Black; //Apaga todos os leds
     }
     
     leds[CENTER_LED] = CRGB::Red; //Sets center led color to red
@@ -148,7 +148,7 @@ void loop()
  }
 }
 
-//Level Parameters
+//Parâmetros dos níveis
 int getTime(int diff) // Returns time delay for led movement base on difficulty
 {
    
@@ -160,41 +160,54 @@ int getTime(int diff) // Returns time delay for led movement base on difficulty
     CENTER_LED = random(9,10);
       timeValue = 100;
       break;
+
+
     case MEDIUM:
     CENTER_LED = random(20,21);
     leds[LEDaddress] = CRGB::Blue;
     FastLED.show();
       timeValue = 80;
       break;
+
+
     case HARD:
     CENTER_LED = random(10,11);
     leds[LEDaddress] = CRGB::Purple;
     FastLED.show();
       timeValue = 60;
       break;
+
     case ON_SPEED:
       CENTER_LED = random(35,36);
       timeValue = 40;
       break;
+
+
     case SONIC_SPEED:
     CENTER_LED = random(20,21);
       timeValue = 30;
       break;
+
+
     case ROCKET_SPEED:
     CENTER_LED = random(30,31);
       timeValue = 18;
       break;
+
+
     case LIGHT_SPEED:
     CENTER_LED = random(24,25);
       timeValue = 15;
       break;
+
+
     case MISSION_IMPOSSIBLE:
       timeValue = 5;
   }
   return timeValue;// Return the delay amount
 }
 
-//Winning difficulty increase parameters
+// Incrementa a dificuldade a cada vitória
 void increaseDifficulty() 
 {
   if (difficulty != MISSION_IMPOSSIBLE && wonThisRound) 
@@ -204,7 +217,7 @@ void increaseDifficulty()
   }
   
 
-//Lost LED Show
+//Efeito dos leds no game over
 void flash()
 { 
   fill_solid(leds, NUM_LEDS, CRGB::Red);
@@ -215,7 +228,7 @@ void flash()
   delay(300);
 }
 
-//Won LED Show
+//WEfeito dos leds no win
 void fadeall() 
 { 
   for(int i = 0; i < NUM_LEDS; i++) { leds[i].nscale8(250); } 
@@ -240,7 +253,7 @@ void cylon()
   }
   Serial.print("x");
 
-  // Now go in the other direction.  
+  // Direção contrária.  
   for(int i = (NUM_LEDS)-1; i >= 0; i--) {
     // Set the i'th led to red 
     leds[i] = CHSV(hue++, 255, 255);

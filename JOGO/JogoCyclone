@@ -43,7 +43,7 @@ bool Playing = true;
 // Is this the first win?
 bool CycleEnded = true;
 
-// Button details
+// Detalhes do botão mestre
 const int buttonPin = 9; // conectado com um resistor de 10k em pulldown no negativo do botão e o positivo do botão no 5v
 int buttonState = 0;
 
@@ -66,7 +66,7 @@ void loop()
   buttonState = digitalRead(buttonPin);
     if(digitalRead(PIN_BOTAO) == LOW)
   {       
-    funcReset(); // Ao pressinar o segundo botão, o jogo reinicia
+    funcReset(); // Ao pressinar o botão secundário, o jogo reinicia
     }
   
   if (buttonState == HIGH)

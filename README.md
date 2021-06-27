@@ -4,7 +4,7 @@ O objetivo do jogo é acertar o led que se movimenta no led que se encontra est�
 # Material necessário:
 Placa Arduino (Uno ou Nano)
 
-Fita de Leds endereçáveis
+Fita de Leds endereçáveis WS2812B
 
 Push buton (2)
 
